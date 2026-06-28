@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users, CheckSquare } from "lucide-react";
+import { LayoutDashboard, Users, CheckSquare, ClipboardList } from "lucide-react";
 
 export function SidebarNav({ pendingCount }: { pendingCount: number | null }) {
   const pathname = usePathname();
@@ -10,6 +10,7 @@ export function SidebarNav({ pendingCount }: { pendingCount: number | null }) {
   const navItems = [
     { href: "/admin/dashboard", icon: LayoutDashboard, label: "Dashboard" },
     { href: "/admin/verifikasi", icon: CheckSquare, label: "Verifikasi Kos" },
+    { href: "/admin/pemesanan", icon: ClipboardList, label: "Pemesanan"},
     { href: "/admin/pengguna", icon: Users, label: "Pengguna" },
   ];
 
