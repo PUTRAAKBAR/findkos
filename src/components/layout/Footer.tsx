@@ -53,15 +53,6 @@ export function Footer() {
               <a href="https://www.instagram.com/ariefalghi_/" className="w-10 h-10 rounded-full border bg-background flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
                 <InstagramIcon className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full border bg-background flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
-                <TwitterIcon className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border bg-background flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
-                <FacebookIcon className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border bg-background flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
-                <MessageCircle className="w-5 h-5" />
-              </a>
             </div>
           </div>
         </div>
