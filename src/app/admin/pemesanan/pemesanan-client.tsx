@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +12,24 @@ export default function PemesananClient({ initialBookings }: { initialBookings: 
   const [activeTab, setActiveTab] = useState("Semua");
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const supabase = createClient();
+    
+    // Subscribe to any changes in the bookings table
+    const channel = supabase
+      .channel('realtime:admin_bookings')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'bookings' }, (payload) => {
+        // Refresh the server component to get the latest joined data
+        router.refresh();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [router]);
 
   const toggleDetail = (id: string) => {
     setExpandedId(expandedId === id ? null : id);
