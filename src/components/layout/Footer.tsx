@@ -48,7 +48,7 @@ export function Footer() {
 
           {/* Social Media */}
           <div>
-            <h3 className="font-semibold mb-4">Ikuti Kami</h3>
+            <h3 className="font-semibold mb-4">Social Media</h3>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full border bg-background flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors">
                 <InstagramIcon className="w-5 h-5" />
