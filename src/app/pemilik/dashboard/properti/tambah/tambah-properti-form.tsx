@@ -56,7 +56,7 @@ export function TambahPropertiForm() {
           <Input id="name" name="name" placeholder="Misal: Kos Ganesha Putra" required />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-2">
             <Label htmlFor="type">Tipe Kos</Label>
             <select 
@@ -74,6 +74,10 @@ export function TambahPropertiForm() {
           <div className="space-y-2">
             <Label htmlFor="price_per_month">Harga per Bulan (Rp)</Label>
             <Input id="price_per_month" name="price_per_month" type="number" placeholder="Misal: 1500000" required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="available_rooms">Jumlah Kamar Kosong</Label>
+            <Input id="available_rooms" name="available_rooms" type="number" placeholder="Misal: 5" required />
           </div>
         </div>
 

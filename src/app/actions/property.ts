@@ -39,6 +39,7 @@ export async function addProperty(prevState: any, formData: FormData) {
   const address = formData.get('address') as string
   const city = formData.get('city') as string
   const price_per_month = parseFloat(formData.get('price_per_month') as string)
+  const available_rooms = parseInt(formData.get('available_rooms') as string) || 0
   const description = formData.get('description') as string
   const map_url = formData.get('map_url') as string
   const facilitiesString = formData.get('facilities') as string
@@ -85,7 +86,8 @@ export async function addProperty(prevState: any, formData: FormData) {
       map_url,
       facilities,
       images,
-      status: 'menunggu'
+      status: 'menunggu',
+      available_rooms
     })
     .select()
     .single()
@@ -176,6 +178,7 @@ export async function updateProperty(propertyId: string, prevState: any, formDat
   const address = formData.get('address') as string
   const city = formData.get('city') as string
   const price_per_month = parseFloat(formData.get('price_per_month') as string)
+  const available_rooms = parseInt(formData.get('available_rooms') as string)
   const description = formData.get('description') as string
   const map_url = formData.get('map_url') as string
   const facilitiesString = formData.get('facilities') as string
@@ -194,6 +197,10 @@ export async function updateProperty(propertyId: string, prevState: any, formDat
     description,
     map_url,
     facilities,
+  }
+
+  if (!isNaN(available_rooms)) {
+    updateData.available_rooms = available_rooms
   }
 
   // Handle Images
