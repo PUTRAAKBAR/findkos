@@ -32,15 +32,6 @@ export default async function Home() {
     .select('*', { count: 'exact', head: true })
     .eq('status', 'disetujui');
 
-  // Hitung Kampus Unik
-  const { data: campuses } = await supabase
-    .from('properties')
-    .select('nearest_campus')
-    .eq('status', 'disetujui')
-    .not('nearest_campus', 'is', null);
-    
-  const uniqueCampusesCount = campuses ? new Set(campuses.map(p => p.nearest_campus?.toLowerCase().trim())).size : 0;
-
   // Format angka
   const displayStudents = studentCount || 0;
   const displayProperties = activePropertiesCount || 0;
