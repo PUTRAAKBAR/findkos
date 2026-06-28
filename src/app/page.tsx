@@ -85,7 +85,7 @@ export default async function Home() {
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 pt-8 border-t border-primary-foreground/20 w-full max-w-3xl">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold mb-1">{displayStudents}</div>
-              <div className="text-sm font-medium text-primary-foreground/80">User</div>
+              <div className="text-sm font-medium text-primary-foreground/80">Pengguna</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold mb-1">{displayProperties}</div>
