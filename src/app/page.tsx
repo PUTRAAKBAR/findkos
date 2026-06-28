@@ -32,19 +32,10 @@ export default async function Home() {
     .select('*', { count: 'exact', head: true })
     .eq('status', 'disetujui');
 
-  // Hitung Kampus Unik
-  const { data: campuses } = await supabase
-    .from('properties')
-    .select('nearest_campus')
-    .eq('status', 'disetujui')
-    .not('nearest_campus', 'is', null);
-    
-  const uniqueCampusesCount = campuses ? new Set(campuses.map(p => p.nearest_campus?.toLowerCase().trim())).size : 0;
 
   // Format angka
   const displayStudents = studentCount || 0;
   const displayProperties = activePropertiesCount || 0;
-  const displayCampuses = uniqueCampusesCount || 0;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -100,10 +91,7 @@ export default async function Home() {
               <div className="text-3xl md:text-4xl font-bold mb-1">{displayProperties}</div>
               <div className="text-sm font-medium text-primary-foreground/80">Kos Aktif</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold mb-1">{displayCampuses}</div>
-              <div className="text-sm font-medium text-primary-foreground/80">Kampus</div>
-            </div>
+
           </div>
         </div>
       </section>
