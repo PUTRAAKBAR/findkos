@@ -81,7 +81,7 @@ export default function KontakPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Email Dukungan</h4>
-                    <p className="text-muted-foreground">support@findkos.id</p>
+                    <p className="text-muted-foreground">farabil@gmail.com</p>
                   </div>
                 </div>
                 
