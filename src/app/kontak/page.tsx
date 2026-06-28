@@ -81,7 +81,8 @@ export default function KontakPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Email Dukungan</h4>
-                    <p className="text-muted-foreground">farabil@gmail.com</p>
+                    <p className="text-muted-foreground">farabilhafiz044@gmail.com</p>
+                    <p className="text-muted-foreground">aalghifari33@gmail.com</p>
                   </div>
                 </div>
                 
@@ -91,7 +92,7 @@ export default function KontakPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Telepon / WhatsApp</h4>
-                    <p className="text-muted-foreground">+62 21 1234 5678</p>
+                    <p className="text-muted-foreground">+6285388590990</p>
                   </div>
                 </div>
                 
@@ -101,7 +102,7 @@ export default function KontakPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg">Lokasi Kantor</h4>
-                    <p className="text-muted-foreground">SCBD, Jl. Jendral Sudirman No. 52, Jakarta Selatan, 12190</p>
+                    <p className="text-muted-foreground">Kantek</p>
                   </div>
                 </div>
               </div>
