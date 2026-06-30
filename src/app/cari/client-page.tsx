@@ -232,7 +232,7 @@ export default function CariKosClient({ initialProperties, initialQuery = "", in
           </div>
           <div className="flex items-center space-x-2">
             <Checkbox id="dapur" checked={selectedFacilities.includes("dapur")} onCheckedChange={(c) => handleFacilityChange("dapur", !!c)} />
-            <Label htmlFor="dapur">Dapur Luar</Label>
+            <Label htmlFor="dapur">Kamar Mandi Dalam</Label>
           </div>
           <div className="flex items-center space-x-2">
             <Checkbox id="listrik" checked={selectedFacilities.includes("listrik")} onCheckedChange={(c) => handleFacilityChange("listrik", !!c)} />
