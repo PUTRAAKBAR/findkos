@@ -32,10 +32,10 @@ export default async function Home() {
     .select('*', { count: 'exact', head: true })
     .eq('status', 'disetujui');
 
+
   // Format angka
   const displayStudents = studentCount || 0;
   const displayProperties = activePropertiesCount || 0;
-  const displayCampuses = uniqueCampusesCount || 0;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -85,16 +85,13 @@ export default async function Home() {
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 pt-8 border-t border-primary-foreground/20 w-full max-w-3xl">
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold mb-1">{displayStudents}</div>
-              <div className="text-sm font-medium text-primary-foreground/80">Mahasiswa</div>
+              <div className="text-sm font-medium text-primary-foreground/80">Pengguna</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold mb-1">{displayProperties}</div>
               <div className="text-sm font-medium text-primary-foreground/80">Kos Aktif</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold mb-1">{displayCampuses}</div>
-              <div className="text-sm font-medium text-primary-foreground/80">Kampus</div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -267,13 +264,6 @@ export default async function Home() {
                   alt="Mahasiswa belajar" 
                   className="w-full h-full object-cover"
                 />
-              </div>
-              <div className="absolute -bottom-6 -right-6 bg-background border p-6 rounded-2xl shadow-xl max-w-xs">
-                <div className="flex items-center gap-2 text-amber-500 mb-2">
-                  <Star className="w-5 h-5 fill-current" />
-                  <span className="font-bold text-foreground text-xl">4.9/5</span>
-                </div>
-                <p className="text-sm font-medium text-muted-foreground">Rating Kepuasan Mahasiswa</p>
               </div>
             </div>
             

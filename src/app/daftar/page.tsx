@@ -56,7 +56,7 @@ export default function DaftarPage() {
                       : 'border-muted bg-background text-muted-foreground hover:border-primary/50'
                   }`}
                 >
-                  Pencari Kos (Mahasiswa)
+                  Pencari Kos
                 </button>
                 <button
                   type="button"

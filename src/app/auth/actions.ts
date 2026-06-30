@@ -64,7 +64,7 @@ export async function signup(prevState: any, formData: FormData) {
         full_name: fullName,
         role: role,
         phone: phone,
-        // email tidak disimpan di public.users, mengacu ke auth.users
+        email: email,
       })
 
     if (insertError) {

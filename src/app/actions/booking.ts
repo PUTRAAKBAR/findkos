@@ -82,6 +82,13 @@ export async function updateBookingStatus(bookingId: string, status: 'disetujui'
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return { error: 'Unauthorized' }
 
+  // Cek status dan property sebelum diupdate
+  const { data: oldBooking } = await supabase
+    .from('bookings')
+    .select('property_id, status')
+    .eq('id', bookingId)
+    .single();
+
   // Untuk MVP, kita langsung update saja (RLS yang akan menolak jika bukan pemiliknya, asalkan RLS sudah diatur dengan baik)
   const { data, error } = await supabase
     .from('bookings')
@@ -110,6 +117,38 @@ export async function updateBookingStatus(bookingId: string, status: 'disetujui'
       .eq('user_id', bookingUserId)
       .eq('status', 'menunggu')
       .neq('id', bookingId);
+  }
+
+  // Kurangi jumlah kamar tersedia jika status berubah menjadi disetujui atau dibayar
+  if (oldBooking && (status === 'disetujui' || status === 'dibayar') && (oldBooking.status !== 'disetujui' && oldBooking.status !== 'dibayar')) {
+    const { data: property } = await supabase
+      .from('properties')
+      .select('available_rooms')
+      .eq('id', oldBooking.property_id)
+      .single();
+      
+    if (property && property.available_rooms > 0) {
+      await supabase
+        .from('properties')
+        .update({ available_rooms: property.available_rooms - 1 })
+        .eq('id', oldBooking.property_id);
+    }
+  }
+
+  // Kembalikan jumlah kamar jika status dibatalkan dan sebelumnya sudah memotong kamar
+  if (oldBooking && (status === 'dibatalkan' || status === 'ditolak') && (oldBooking.status === 'disetujui' || oldBooking.status === 'dibayar')) {
+    const { data: property } = await supabase
+      .from('properties')
+      .select('available_rooms')
+      .eq('id', oldBooking.property_id)
+      .single();
+      
+    if (property) {
+      await supabase
+        .from('properties')
+        .update({ available_rooms: property.available_rooms + 1 })
+        .eq('id', oldBooking.property_id);
+    }
   }
 
   revalidatePath('/pemilik/dashboard')

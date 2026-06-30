@@ -9,6 +9,7 @@ import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
 import { TopActions, BookingWidget } from "./client-actions";
 import { PhotoGallery } from "./photo-gallery";
+import { RealtimeRoomsBadge } from "./realtime-rooms-badge";
 
 export default async function DetailKosPage({ params }: { params: Promise<{ id: string }> }) {
   const supabase = await createClient();
@@ -51,7 +52,7 @@ export default async function DetailKosPage({ params }: { params: Promise<{ id: 
 
   // Siapkan data placeholder untuk MVP
   const available = property.status === 'disetujui';
-  const availableRooms = 5; // Placeholder
+  const availableRooms = property.available_rooms || 0;
   const images = property.images && property.images.length > 0 
     ? property.images 
     : [
@@ -90,11 +91,11 @@ export default async function DetailKosPage({ params }: { params: Promise<{ id: 
         <div>
           <div className="flex items-center gap-2 mb-2">
             <Badge className="bg-blue-500 hover:bg-blue-600 capitalize">{property.type}</Badge>
-            {available ? (
-              <Badge className="bg-emerald-500 hover:bg-emerald-600">Tersedia {availableRooms} Kamar</Badge>
-            ) : (
-              <Badge variant="destructive">Penuh</Badge>
-            )}
+            <RealtimeRoomsBadge 
+              propertyId={property.id} 
+              initialRooms={availableRooms} 
+              isAvailable={available} 
+            />
           </div>
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">{property.name}</h1>
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">

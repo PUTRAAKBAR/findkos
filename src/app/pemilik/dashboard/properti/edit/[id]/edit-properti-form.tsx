@@ -73,7 +73,7 @@ export function EditPropertiForm({ property }: { property: any }) {
           <Input id="name" name="name" defaultValue={property.name || ""} required />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-2">
             <Label htmlFor="type">Tipe Kos</Label>
             <select 
@@ -92,6 +92,10 @@ export function EditPropertiForm({ property }: { property: any }) {
           <div className="space-y-2">
             <Label htmlFor="price_per_month">Harga per Bulan (Rp)</Label>
             <Input id="price_per_month" name="price_per_month" type="number" defaultValue={property.price_per_month || ""} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="available_rooms">Jumlah Kamar Kosong</Label>
+            <Input id="available_rooms" name="available_rooms" type="number" defaultValue={property.available_rooms ?? 0} required />
           </div>
         </div>
 
